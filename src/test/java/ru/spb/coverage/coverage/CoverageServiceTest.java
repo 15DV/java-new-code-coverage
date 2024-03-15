@@ -1,6 +1,6 @@
 package ru.spb.coverage.coverage;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -17,7 +17,6 @@ class CoverageServiceTest {
         reportPrinter.saveReportAsFile(jacocoReport);
 
         var file = new File("report.txt");
-        Assertions.assertThat(file)
-                .exists();
+        Assertions.assertTrue(file.exists());
     }
 }

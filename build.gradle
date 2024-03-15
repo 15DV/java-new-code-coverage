@@ -11,9 +11,14 @@ ext {
     lombok = '1.18.30'
     jacoco = '0.8.11'
     junit = '5.10.0'
-    assertj = '3.25.3'
     commons_lang3 = '3.14.0'
     jgit = '6.9.0.202403050737-r'
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 repositories {
@@ -26,14 +31,10 @@ dependencies {
 
     // Tests
     testImplementation "org.junit.jupiter:junit-jupiter:${junit}"
-    testImplementation "org.assertj:assertj-core:${assertj}"
 
     // Lombok
     compileOnly "org.projectlombok:lombok:${lombok}"
     annotationProcessor "org.projectlombok:lombok:${lombok}"
-
-    testCompileOnly "org.projectlombok:lombok:${lombok}"
-    testAnnotationProcessor "org.projectlombok:lombok:${lombok}"
 
     // Jacoco
     implementation "org.jacoco:org.jacoco.core:${jacoco}"
@@ -57,14 +58,4 @@ publishing {
     repositories {
         mavenLocal()
     }
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
-}
-
-test {
-    useJUnitPlatform()
 }
