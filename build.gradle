@@ -21,23 +21,23 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.apache.commons:commons-lang3:$commons_lang3'
-    implementation 'org.eclipse.jgit:org.eclipse.jgit:$jgit'
+    implementation "org.apache.commons:commons-lang3:${commons_lang3}"
+    implementation "org.eclipse.jgit:org.eclipse.jgit:${jgit}"
 
     // Tests
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:$junit'
-    testImplementation 'org.assertj:assertj-core:$assertj'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junit}"
+    testImplementation "org.assertj:assertj-core:${assertj}"
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok:$lombok'
-    annotationProcessor 'org.projectlombok:lombok:$lombok'
+    compileOnly "org.projectlombok:lombok:${lombok}"
+    annotationProcessor "org.projectlombok:lombok:${lombok}"
 
-    testCompileOnly 'org.projectlombok:lombok:$lombok'
-    testAnnotationProcessor 'org.projectlombok:lombok:$lombok'
+    testCompileOnly "org.projectlombok:lombok:${lombok}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombok}"
 
     // Jacoco
-    implementation 'org.jacoco:org.jacoco.core:$jacoco'
-    implementation 'org.jacoco:org.jacoco.report:$jacoco'
+    implementation "org.jacoco:org.jacoco.core:${jacoco}"
+    implementation "org.jacoco:org.jacoco.report:${jacoco}"
 }
 
 test {

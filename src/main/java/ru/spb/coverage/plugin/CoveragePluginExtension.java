@@ -10,9 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CoveragePluginExtension {
-    private String moduleName;
-
-    private String branch = "master";
+    private String branch = "main";
 
     private Double minCoverage = 75.0;
 }
