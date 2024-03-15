@@ -25,7 +25,7 @@ dependencies {
     implementation "org.eclipse.jgit:org.eclipse.jgit:${jgit}"
 
     // Tests
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${junit}"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit}"
     testImplementation "org.assertj:assertj-core:${assertj}"
 
     // Lombok
@@ -65,3 +65,6 @@ java {
     }
 }
 
+test {
+    useJUnitPlatform()
+}

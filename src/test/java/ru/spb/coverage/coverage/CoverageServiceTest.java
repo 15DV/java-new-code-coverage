@@ -1,16 +1,13 @@
+package ru.spb.coverage.coverage;
+
 import org.assertj.core.api.Assertions;
-import org.gradle.testfixtures.ProjectBuilder;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import ru.spb.coverage.coverage.CoverageService;
-import ru.spb.coverage.coverage.ReportPrinter;
 
 import java.io.File;
 
-@Disabled
 class CoverageServiceTest {
 
-    CoverageService coverageService = new CoverageService("master");
+    CoverageService coverageService = new CoverageService("main");
     ReportPrinter reportPrinter = new ReportPrinter();
 
     @Test
