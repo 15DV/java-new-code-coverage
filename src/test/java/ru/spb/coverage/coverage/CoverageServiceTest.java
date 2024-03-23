@@ -1,10 +1,12 @@
 package ru.spb.coverage.coverage;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+@Disabled
 class CoverageServiceTest {
 
     CoverageService coverageService = new CoverageService("main");

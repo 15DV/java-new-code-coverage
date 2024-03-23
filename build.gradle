@@ -48,7 +48,7 @@ test {
 gradlePlugin {
     plugins {
         coveragePlugin {
-            id = 'ru.spb.coverage'
+            id = 'new-code-coverage'
             implementationClass = 'ru.spb.coverage.plugin.CoveragePlugin'
         }
     }
@@ -56,6 +56,13 @@ gradlePlugin {
 
 publishing {
     repositories {
-        mavenLocal()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/15DV/java-new-code-coverage")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
