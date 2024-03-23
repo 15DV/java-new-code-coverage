@@ -27,11 +27,12 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CoverageService {
 
+    //TODO: exec file can have another name
     private static final String JACOCO_EXEC_FILE = "/build/jacoco/test.exec";
     private static final String BUILD_CLASSES = "/build/classes/java/main";
     private static final String SOURCE_FILES = "/src/main/java/";
     private final String targetBranch;
-    private static final String gitPath = ".git";
+    private static final String GIT_PATH = ".git";
 
     public CoverageService(String targetBranch) {
         this.targetBranch = "refs/heads/" + targetBranch;
@@ -40,7 +41,7 @@ public class CoverageService {
     public Report createReportFromGitDiffs() {
         var coverageBuilder = analyzeCode();
 
-        var gitDiffs = GitUtils.getChangesInNewBranch(targetBranch, gitPath);
+        var gitDiffs = GitUtils.getChangesInNewBranch(targetBranch, GIT_PATH);
         if (gitDiffs.isEmpty()) {
             log.info("No diffs between current branch and target branch");
             return Report.builder().build();

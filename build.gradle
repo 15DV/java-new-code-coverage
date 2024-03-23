@@ -7,28 +7,38 @@ plugins {
 group = 'ru.spb.coverage'
 version = '1.0'
 
+ext {
+    lombok = '1.18.30'
+    jacoco = '0.8.11'
+    junit = '5.10.0'
+    commons_lang3 = '3.14.0'
+    jgit = '6.9.0.202403050737-r'
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.apache.commons:commons-lang3:3.14.0'
-    implementation 'org.eclipse.jgit:org.eclipse.jgit:6.9.0.202403050737-r'
+    implementation "org.apache.commons:commons-lang3:${commons_lang3}"
+    implementation "org.eclipse.jgit:org.eclipse.jgit:${jgit}"
 
     // Tests
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-    testImplementation 'org.assertj:assertj-core:3.25.3'
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit}"
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
-
-    testCompileOnly 'org.projectlombok:lombok:1.18.30'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly "org.projectlombok:lombok:${lombok}"
+    annotationProcessor "org.projectlombok:lombok:${lombok}"
 
     // Jacoco
-    implementation 'org.jacoco:org.jacoco.core:0.8.11'
-    implementation 'org.jacoco:org.jacoco.report:0.8.11'
+    implementation "org.jacoco:org.jacoco.core:${jacoco}"
+    implementation "org.jacoco:org.jacoco.report:${jacoco}"
 }
 
 test {
@@ -37,8 +47,8 @@ test {
 
 gradlePlugin {
     plugins {
-        coverage_plugin {
-            id = 'ru.spb.coverage'
+        coveragePlugin {
+            id = 'new-code-coverage'
             implementationClass = 'ru.spb.coverage.plugin.CoveragePlugin'
         }
     }
@@ -46,7 +56,13 @@ gradlePlugin {
 
 publishing {
     repositories {
-        mavenLocal()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/15DV/java-new-code-coverage")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
-
